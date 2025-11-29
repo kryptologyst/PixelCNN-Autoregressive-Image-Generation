@@ -1,0 +1,53 @@
+# Model configuration
+model:
+  in_channels: 3
+  hidden_channels: 64
+  num_layers: 12
+  num_residual_blocks: 5
+  dropout: 0.5
+  num_classes: 256
+
+# Training configuration
+training:
+  max_epochs: 100
+  learning_rate: 1e-3
+  weight_decay: 1e-4
+  gradient_clip_val: 1.0
+  precision: "16-mixed"
+  sample_temperature: 1.0
+  sample_top_k: null
+  sample_top_p: null
+
+# Data configuration
+data:
+  dataset_name: "cifar10"
+  batch_size: 64
+  num_workers: 4
+  image_size: 32
+  data_root: "./data"
+  use_augmentation: true
+  max_samples: null
+
+# Logger configuration
+logger:
+  use_wandb: false
+  use_tensorboard: true
+  project_name: "pixelcnn"
+  run_name: "pixelcnn_run"
+  log_dir: "./logs"
+
+# Evaluation configuration
+evaluation:
+  num_generated_samples: 1000
+  temperature: 1.0
+  top_k: null
+  top_p: null
+
+# Sampling configuration
+sampling:
+  num_samples: 16
+  image_size: [3, 32, 32]
+  temperature: 1.0
+  top_k: null
+  top_p: null
+  seed: 42
